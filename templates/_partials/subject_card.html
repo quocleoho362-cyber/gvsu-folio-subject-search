@@ -1,0 +1,6 @@
+<div class="subject-card">
+  <h3>{{ subject.title }}</h3>
+  <p>Subjects: {{ subject.subjects|join(", ") if subject.subjects else "None" }}</p>
+  <p>Contributors: {{ subject.contributors|join(", ") if subject.contributors else "None" }}</p>
+  <p>Created: {{ subject.created or "Unknown" }}</p>
+</div>

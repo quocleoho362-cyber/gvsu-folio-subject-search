@@ -1,0 +1,213 @@
+:root {
+    --gvsu-blue: #1c3fa5;
+    --navy: #102a4f;
+    --white: #ffffff;
+    --text: #0f1b2d;
+}
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    font-family: "Source Sans 3", "Segoe UI", Tahoma, sans-serif;
+    color: var(--text);
+    background: var(--navy);
+}
+.topbar {
+    background: var(--gvsu-blue);
+    color: var(--white);
+    padding: 16px 24px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+.topbar .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+.logo {
+    width: 34px;
+    height: 34px;
+    border: 3px solid var(--white);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 18px;
+    font-weight: 800;
+}
+.hero {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 36px 24px 48px;
+}
+.hero h1 {
+    margin: 0 0 18px;
+    color: var(--white);
+    font-family: "Merriweather", Georgia, serif;
+    font-weight: 700;
+    font-size: clamp(28px, 4vw, 44px);
+}
+.search-bar {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0;
+    background: var(--white);
+    border-radius: 2px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+.search-bar input {
+    border: 0;
+    padding: 16px 18px;
+    font-size: 18px;
+    outline: none;
+}
+.search-bar button {
+    border: 0;
+    background: var(--gvsu-blue);
+    color: var(--white);
+    padding: 0 28px;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+}
+.content {
+    background: #f7f7f9;
+    padding: 28px 24px 48px;
+}
+.content-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+.meta {
+    color: #46536b;
+    margin: 0 0 8px;
+}
+.cards {
+    display: grid;
+    gap: 16px;
+    margin-top: 18px;
+}
+.subject-card {
+    background: #ffffff;
+    border-left: 4px solid var(--gvsu-blue);
+    padding: 14px 16px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+.subject-card h3 {
+    margin: 0 0 6px;
+    font-size: 18px;
+}
+.subject-card p {
+    margin: 4px 0;
+    color: #3f4b61;
+}
+.error {
+    color: #b71c1c;
+    font-weight: 600;
+}
+.load-more {
+    width: 100%;
+    margin: 22px 0 0;
+    padding: 14px 16px;
+    border: 2px solid #9bb0ff;
+    background: #ffffff;
+    color: var(--gvsu-blue);
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 8px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    box-shadow: 0 3px 10px rgba(16, 42, 79, 0.1);
+}
+.load-more:hover {
+    border-color: var(--gvsu-blue);
+}
+.load-more:disabled {
+    opacity: 0.6;
+    cursor: default;
+}
+.site-footer {
+    background: #3b3b3b;
+    color: #e6e6e6;
+    margin-top: 36px;
+}
+.footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 24px 28px;
+    display: grid;
+    grid-template-columns: minmax(260px, 1.2fr) minmax(200px, 1fr);
+    gap: 48px;
+}
+.footer-column h2 {
+    margin: 0 0 16px;
+    font-size: 18px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #ffffff;
+}
+.footer-column p {
+    margin: 14px 0 6px;
+    color: #cfcfcf;
+}
+.footer-column a {
+    color: #ffffff;
+    text-decoration: underline;
+}
+.social-icons {
+    display: flex;
+    gap: 14px;
+}
+.social-icon {
+    width: 40px;
+    height: 40px;
+    border: 2px solid #ffffff;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-weight: 700;
+    text-decoration: none;
+}
+.footer-legal {
+    background: #2f2f2f;
+    border-top: 1px solid #4a4a4a;
+}
+.footer-legal-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 16px 24px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    color: #d6d6d6;
+}
+.footer-legal a {
+    color: #d6d6d6;
+    text-decoration: underline;
+}
+@media (max-width: 700px) {
+    .search-bar {
+        grid-template-columns: 1fr;
+    }
+    .search-bar button {
+        width: 100%;
+        padding: 14px 18px;
+    }
+    .footer-inner {
+        grid-template-columns: 1fr;
+    }
+}
+.social-icon svg {
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
+}
