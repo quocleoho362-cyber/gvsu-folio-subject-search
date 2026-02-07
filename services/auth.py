@@ -26,7 +26,7 @@ def get_okapi_token() -> str:
     resp = requests.post(url, headers=headers, json=payload, timeout=15)
 
     if resp.status_code >= 400:
-        raise FolioAuthError(f"Login failed: {resp.status_code} {resp.text}")
+        raise FolioAuthError("Unable to authenticate with the library system. Please check your credentials and try again.")
 
     # The token usually comes back in cookies; requests exposes them via resp.cookies.
     token = resp.cookies.get("folioAccessToken") or resp.cookies.get("okapiToken")
@@ -40,6 +40,6 @@ def get_okapi_token() -> str:
                 break
 
     if not token:
-        raise FolioAuthError("Login succeeded but access token not found in cookies.")
+        raise FolioAuthError("Unable to complete library authentication. Please try again.")
 
     return token

@@ -81,12 +81,18 @@
             }
         } catch (err) {
             hadError = true;
-            loadMoreButton.textContent = "Error loading results";
+            loadMoreButton.textContent = "Couldn't load more results";
+            console.error("Load more error:", err);
         } finally {
             if (!hadError) {
                 setButtonState(false);
             } else {
                 loadMoreButton.disabled = false;
+                // Reset button after delay to allow retry
+                setTimeout(() => {
+                    loadMoreButton.textContent = "Show more results";
+                    loadMoreButton.disabled = false;
+                }, 3000);
             }
         }
     });

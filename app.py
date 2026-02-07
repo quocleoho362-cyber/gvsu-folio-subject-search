@@ -18,6 +18,10 @@ def index():
     if subject:
         try:
             results = search_instances_by_subject(subject, offset=offset)
+            # Check if search returned no results
+            if results and results.get("total", 0) == 0:
+                results = None
+                error = f"No results found for \"{subject}\". Try a different search term."
         except FolioSearchError as e:
             error = str(e)
 
@@ -37,12 +41,12 @@ def load_more():
     offset = int(request.args.get("offset", 0))
 
     if not subject:
-        return jsonify({"error": "Subject is required."}), 400
+        return jsonify({"error": "Please provide a search term."}), 400
 
     try:
         results = search_instances_by_subject(subject, offset=offset)
     except FolioSearchError as e:
-        return jsonify({"error": str(e)}), 400
+        return jsonify({"error": str(e)}), 500
 
     return jsonify(results)
 

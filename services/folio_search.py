@@ -10,10 +10,13 @@ class FolioSearchError(Exception):
 def search_instances_by_subject(subject: str, offset: int = 0, limit: int = 10):
     # Keep inputs honest so we don't send broken queries to FOLIO.
     if not subject:
-        raise FolioSearchError("Subject is required.")
+        raise FolioSearchError("Please enter a subject to search.")
 
     # Auth token for Okapi requests.
-    token = get_okapi_token()
+    try:
+        token = get_okapi_token()
+    except Exception as e:
+        raise FolioSearchError("Unable to connect to the library system. Please try again later.")
 
     # FOLIO search endpoint + Okapi headers.
     url = f"{OKAPI_BASE_URL}/search/instances"
@@ -34,7 +37,7 @@ def search_instances_by_subject(subject: str, offset: int = 0, limit: int = 10):
     resp = requests.get(url, headers=headers, params=params, timeout=15)
 
     if resp.status_code >= 400:
-        raise FolioSearchError(f"Search failed: {resp.status_code} {resp.text}")
+        raise FolioSearchError("The library search system is temporarily unavailable. Please try again in a moment.")
 
     # Normalize the payload into a small, template-friendly shape.
     data = resp.json()
